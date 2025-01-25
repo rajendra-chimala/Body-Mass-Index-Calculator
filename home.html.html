@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .canvas{
+            background: #0e8dbc;
+            margin: 20px 100px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            text-align: center;
+            padding: 30px;
+            border-radius: 7px;
+
+        }
+        h1{
+            color: white;
+            text-shadow: 0 1px 0 #ccc,
+                         0 2px 0 #c9c9c9,
+                         0 3px 0 #bbb,
+                         0 4px 0 #b9b9b9,
+                         0 5px 0 #aaa,
+                         0 6px 1px rgba(0,0,0,.1),
+                         0 0 5px rgba(0,0,0,.1),
+                         0 1px 3px rgba(0,0,0,.3),
+                         0 3px 5px rgba(0,0,0,.2),
+                         0 5px 10px rgba(0,0,0,.25),
+                         0 10px 10px rgba(0,0,0,.2),
+                         0 20px 20px rgba(0,0,0,.15);
+        }
+
+        .height{
+            height: 25px;
+            width: 220px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 9px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .weight{
+            height: 25px;
+            width: 220px;
+            border-radius: 5px;
+            padding-left: 9px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        }
+
+        .infoin{
+            border: 10px;
+            border-color: white;
+        }
+
+        .leb{
+            margin-left: -110px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .button{
+            margin-top: 40px;
+            width: 220px;
+            height: 30px;
+            border: none;
+            background-color: rgb(6, 233, 6);
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+
+        <h1>BMI Calculator </h1>
+        <div class="infoin">
+       <form>
+        <p class="leb">Enter your Height </p>
+        <input type="text" class="height" placeholder="00.0 CM" id="height"><br>
+        <p class="leb">Enter your Weight</p>
+        <input type="text" class="weight" placeholder="00.0 KG" id="weight"><br>
+        <button class="button">SUBMIT</button>
+       </form>
+    </div>
+    <h4 id="results">Results !</h4>
+    </div>
+</body>
+
+<script>
+    const from = document.querySelector('form')
+
+    from.addEventListener('submit', function(e){
+        e.preventDefault();
+         const height = parseInt(document.querySelector('#height').value);
+         const weight= parseInt(document.querySelector('#weight').value);
+         const results = document.querySelector('h4');
+
+         if(height == '' || height <= 0 || isNaN(height) || weight == '' || weight <= 0 || isNaN(weight)){
+            results.innerHTML = "Enter a valide height and weight !"
+         }else{
+            const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+            results.innerHTML = bmi+' KG/M2';
+         }
+       
+    })
+
+
+
+</script>
+</html>
